@@ -9,20 +9,18 @@ import java.util.Scanner;
 import java.util.Set;
 
 
- abstract class Turism {
+ abstract public class Turism {
      
     float ratting;
     protected Double pret ;
     String adresa;
     int[] program=new int[2];
-    Scanner in=new Scanner (System.in);
-    public int nr_adulti;
-    public int nr_copii;
+    public Scanner in=new Scanner (System.in);
      
-    public Turism()
+     public Turism()
     {
         ratting=0;
-        pret=0.0;
+       // pret=0.0;
         adresa=" ";
         program[0]=0;
         program[1]=0;
@@ -47,8 +45,8 @@ import java.util.Set;
     @Override
     public String toString()
     {
-        return "Ratting: "+ratting+ "Adresa: "+adresa+ 
-                "\n Program :"+program[0]+" - "+program[1];
+        return " \nRatting: "+ratting+ " \nAdresa: "+adresa+ 
+                "\n Program : "+program[0]+" - "+program[1];
     }
     
     
@@ -66,34 +64,42 @@ import java.util.Set;
     
    
     
-    public void setNrPersoane(int nr_copii, int nr_adulti)
-    {
-        this.nr_adulti = nr_adulti;
-        this.nr_copii = nr_copii;
-    }
-    
+//    public void setNrPersoane(int nr_copii, int nr_adulti)
+//    {
+//        this.nr_adulti = nr_adulti;
+//        this.nr_copii = nr_copii;
+//    }
+//    
      public static void main(String[] args) throws Exception {
-         
+            Persoana p1;
             int[] program = {12,17};int[] prog1 = {14,19};
-            double[] p = {4,10,3.4,6.7,1.3,5};
-           double[] x = {2.5,8,5,8,9.5,5.5};
-           
-           muzeu_casa m = new muzeu_casa(4.9f,"Str Domneasca 17",prog1,"Casa lui Alexandru Ioan Cuza","Casa memoriala");
-            muzeu_casa nec = new muzeu_casa();
-            muzeu_casa copy = new muzeu_casa(m);
+            double[] p = {4,10,3.4,6.7};
+            String[] cam ={"Arme din razboi","Picturi","Sabii din perioada lui Decebal","Primele monezi "};
+           String[] cas = {"Bucatarie","Bai","Sala de conferinte","Dormitor"};
+            p1=new Persoana(3,4,"Radu");
+           Muzeu m = new Muzeu(4.9f,"Str Domneasca 17",prog1,"Muzeul Romaniei","Istorie",1980);
+//            Muzeu nec = new Muzeu();
+//            Muzeu copy = new Muzeu(m);
+//            Casa_memoriala a=new Casa_memoriala(4.9f,"Str Iorga",prog1,"Casa lui Ioan Cuza","istorie",1888,"Ioan Cuza");
+//            System.out.println(a); 
+//            a.setPret(p, 12, 40);
+//            a.setCamere(4,cas);
+//            a.intrare(p1);
+//            a.interior();
             
-            
-           //Adaugam lista de pret
-           m.setPreturi(p);
+           m.setPret(p,15,20);
+           //m.setProgram(program);
+           m.setMuzeu(cam);
+           System.out.println(m);
            
-           //Add nr de copii/adulti
-           m.setNrPersoane(3,4);
            
-           //Adaugam program 
-           m.setProgram(program);
+           m.intrare(p1);
+           m.interior();
+           m.vreaPoze(p1);
+           m.vreaSuvenir(p1);
+           m.vreaSaDoneze(p1, 5);
            
-           //Adaugam ceva despre
-           m.SetAbout1("istoria domnitorului");
+           System.out.println(p1);
            
            //Setam nr camere
            
