@@ -5,105 +5,100 @@
  */
 
 package yas.proiect.smart;
+import java.util.Map;
 import java.util.Scanner;
-import java.util.Set;
-
-
- abstract public class Turism {
-     
-    float ratting;
-    protected Double pret ;
-    String adresa;
+public abstract class Turism {
+    float rating;
+    double pret;
+    String adresa, nume;
     int[] program=new int[2];
-    public Scanner in=new Scanner (System.in);
-     
-     public Turism()
+    int nrPersoane, nrAdulti, nrCopii;
+    
+    
+    public Turism()
     {
-        ratting=0;
-       // pret=0.0;
+        rating=0;
+        pret=0.0;
         adresa=" ";
+        nume=" ";
         program[0]=0;
         program[1]=0;
+        nrAdulti=0;
+        nrCopii=0;
+        nrPersoane=nrAdulti+nrCopii;
     }
     
-    public Turism(float ratting, String adresa, int program[])
+    public Turism(float rating, Double pret, String adresa,String nume, int program[],int nrAdulti,int nrCopii)
     {
-        this.ratting=ratting;
-       this.pret=0.0;
+        this.rating=rating;
+        this.pret=pret;
         this.adresa=adresa;
+        this.nume=nume;
         this.program=program;
+        this.nrAdulti=nrAdulti;
+        this.nrCopii=nrCopii;
+        nrPersoane=nrAdulti+nrCopii;
     }
     
     public Turism(Turism copie)
     {
-        ratting=copie.ratting;
+        rating=copie.rating;
         pret=copie.pret;
         adresa=copie.adresa;
+        nume=copie.nume;
         program=copie.program;
+        nrAdulti=copie.nrAdulti;
+        nrCopii=copie.nrCopii;
+        nrPersoane=nrAdulti+nrCopii;
+        
     }
     
-    @Override
     public String toString()
     {
-        return " \nRatting: "+ratting+ " \nAdresa: "+adresa+ 
-                "\n Program : "+program[0]+" - "+program[1];
+        return "Nume: "+nume+"\nAdresa: "+adresa+"\nRating: "+rating+"\nPret: "+pret+"\nAdresa: "+adresa+"\nProgram: "+
+                program+"\nNumarul de persoane: "+nrPersoane+" dintre care adulti: "+nrAdulti+" si copii: "+nrCopii;
+    }
+      
+    public String getAdresa()
+    {
+        return adresa;
+    }
+    
+    public Double getPret()
+    {
+        return pret;
+    }
+
+    public int[] getProgram()
+    {
+        return program;
+    }
+    
+    public String getNume()
+    {
+        return nume;
+    }
+    
+    public float getRating()
+    {
+        return rating;
+    }
+    
+    public int getNrPersoane()
+    {
+        return nrPersoane;
     }
     
     
-    public void setProgram(int[] program){
-    this.program= program;
-    }
-    
-    public int[] getProgram(){
-    return program;
-    }
-     
-    public double getPret(){
-    return pret;
-    }
-    
-   
-    
-//    public void setNrPersoane(int nr_copii, int nr_adulti)
+//     public void afiseazaInformatii()
 //    {
-//        this.nr_adulti = nr_adulti;
-//        this.nr_copii = nr_copii;
+//        System.out.println("Nume: "+nume);
+//        System.out.println("Adresa: "+adresa);
+//        System.out.println("Rating: "+rating);
+//        System.out.println("Pret: "+pret);
+//        System.out.println("Program: "+program);
+//        System.out.println("Numarul de persoane: "+nrPersoane+" dintre care adulti: "+nrAdulti+" si copii: "+nrCopii);
 //    }
-//    
-     public static void main(String[] args) throws Exception {
-            Persoana p1;
-            int[] program = {12,17};int[] prog1 = {14,19};
-            double[] p = {4,10,3.4,6.7};
-            String[] cam ={"Arme din razboi","Picturi","Sabii din perioada lui Decebal","Primele monezi "};
-           String[] cas = {"Bucatarie","Bai","Sala de conferinte","Dormitor"};
-            p1=new Persoana(3,4,"Radu");
-           Muzeu m = new Muzeu(4.9f,"Str Domneasca 17",prog1,"Muzeul Romaniei","Istorie",1980);
-//            Muzeu nec = new Muzeu();
-//            Muzeu copy = new Muzeu(m);
-//            Casa_memoriala a=new Casa_memoriala(4.9f,"Str Iorga",prog1,"Casa lui Ioan Cuza","istorie",1888,"Ioan Cuza");
-//            System.out.println(a); 
-//            a.setPret(p, 12, 40);
-//            a.setCamere(4,cas);
-//            a.intrare(p1);
-//            a.interior();
-            
-           m.setPret(p,15,20);
-           //m.setProgram(program);
-           m.setMuzeu(cam);
-           System.out.println(m);
-           
-           
-           m.intrare(p1);
-           m.interior();
-           m.vreaPoze(p1);
-           m.vreaSuvenir(p1);
-           m.vreaSaDoneze(p1, 5);
-           
-           System.out.println(p1);
-           
-           //Setam nr camere
-           
-         
-            
-     }
+
+    
 }

@@ -19,8 +19,8 @@ public class Casa_memoriala extends Muzeu{
     super();
     this.Autor="Necunoscut";
     }
-    public Casa_memoriala(float ratting, String adresa, int[] program, String nume, String tipul,int an,String Autor){
-    super(ratting,adresa,program,nume,tipul,an);
+    public Casa_memoriala(float ratting,double pret ,String adresa, int[] program,int nrAdulti,int nrCopii ,String nume, String tipul,int an,String Autor){
+    super(ratting,pret,adresa,nume,program,nrAdulti,nrCopii,tipul,an);
     this.Autor=Autor;
     }
     public Casa_memoriala(Casa_memoriala m){

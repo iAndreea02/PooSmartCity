@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package yas.proiect.smart;
-
+import java.util.Scanner;
 // String[] tipul = {"Casa memoriabila","Muzeu"};
 class Muzeu extends Turism {
 //Nume muzeu
@@ -13,24 +13,27 @@ class Muzeu extends Turism {
     public String tipul;  //Muzeu
     public String nume;
     private double[] all_pret = new double[4]; //Pretul la toate accesorile
+   
     protected double pretcopil;
     protected double pretadult;
+    
     private String[] obiecte;
+    private double bill=0.0; 
+    
+    Scanner in=new Scanner(System.in);
     //Constructo -fara parametrii
 
     public Muzeu() {
 
         super();
-        nume = "Necunoscut";
         tipul = "Necunoscut";
         an=0;
         // tipul=null;
     }
 
     //-cu param
-    public Muzeu(float ratting, String adresa, int[] program, String nume, String tipul,int an) {
-        super(ratting, adresa, program);
-        this.nume = nume;
+    public Muzeu(float rating, Double pret, String adresa,String nume, int program[],int nrAdulti,int nrCopii, String tipul,int an) {
+        super(rating,pret,adresa,nume,program,nrAdulti,nrCopii);
         this.tipul = tipul;
         this.an=an;
     }
@@ -38,7 +41,6 @@ class Muzeu extends Turism {
     //-de copiere
     public Muzeu(Muzeu m) {
         super(m);
-        nume = m.nume;
         tipul = m.tipul;
         an=m.an;
     }
@@ -46,7 +48,6 @@ class Muzeu extends Turism {
     public void setPret(double[] pret, double pretintreg, int reducere)throws Exception {
         if (pret.length != 4)
         throw new Exception("Lista de preturi nu a fost introdusa corect");
-        
         all_pret = pret;
         this.pretcopil = pretintreg - pretintreg * reducere / 100;
         this.pretadult = pretintreg;
@@ -57,17 +58,17 @@ class Muzeu extends Turism {
         this.obiecte = obj;
     }
 
-    public void intrare(Persoana P1) throws Exception {
+    public void intrare() throws Exception {
         System.out.println("Bine ai venit la: " + nume);
         System.out.println("Pret la adulti este : " + pretadult + "   Pret la copii: " + pretcopil);
 
-        if (P1.nr_copii <= 0 && P1.nr_adulti <= 0) {
+        if (nrCopii <= 0 && nrAdulti <= 0) {
             throw new Exception("Nu ati setata corect numarul de adulti si/sau copii");
         }
 
-        P1.bill += P1.nr_copii * pretcopil + P1.nr_adulti * pretadult;
-        System.out.println("Nr de adulti: " + P1.nr_adulti + " Nr de copii " + P1.nr_copii + "va ajunge la pretul de " + (P1.nr_copii * pretcopil + P1.nr_adulti * pretadult) + " lei");
-
+        bill += nrCopii * pretcopil + nrAdulti * pretadult;
+        System.out.println("Nr de adulti: " + nrAdulti + " Nr de copii " + nrCopii + "va ajunge la pretul de " + (nrCopii * pretcopil + nrAdulti * pretadult) + " lei");
+        
     }
 
     //todo
