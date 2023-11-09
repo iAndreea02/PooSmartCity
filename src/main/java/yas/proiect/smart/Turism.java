@@ -99,6 +99,26 @@ public abstract class Turism {
 //        System.out.println("Program: "+program);
 //        System.out.println("Numarul de persoane: "+nrPersoane+" dintre care adulti: "+nrAdulti+" si copii: "+nrCopii);
 //    }
-
+    public static void main(String[] args) {
+        int program[]={12,18};
+        double[] pret1={10.5,4.5,6.7,8.3};
+        String[] obj = {"Monede","Sabii","Arme din razboi","Documente oficiale"};
+        Muzeu m = new Muzeu(4.6f,10.9,"Str Domneasca","Muzeul national",program,4,5,"Istorie",1980);
+        m.setMuzeu(obj);
+        
+        try{
+          
+        m.setPret(pret1, 20);
+        m.cumparBilet();
+        m.vreaSaIntre();
+        m.vreaPoze();
+        m.vreaSaDoneze();
+        m.vreaSuvenir();
+        System.out.println("Factura pentru muzeu este : "+m.getBill() );
+       }catch(Exception e){
+           System.out.println(e);
+       }
+    }
+    
     
 }

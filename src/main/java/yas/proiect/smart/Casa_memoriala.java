@@ -5,12 +5,13 @@
  */
 package yas.proiect.smart;
 
-/**
- *
- * @author andre
+/*
+Casa memoriabila 
+-  
+
  */
 public class Casa_memoriala extends Muzeu{
-    public static String atarctie ="Casa memoriabila";
+    private static String atarctie ="Casa memoriabila";
     public String Autor;
     private int nrCamere;
     private String[] camere;
@@ -33,7 +34,6 @@ public class Casa_memoriala extends Muzeu{
         this.camere =camere; 
     }
     
-    @Override
     public void interior() {
         System.out.println("Casa lui "+Autor+" este compus din: ");
         int i = 0;
