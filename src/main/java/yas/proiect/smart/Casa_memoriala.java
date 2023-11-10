@@ -18,8 +18,8 @@ public class Casa_memoriala extends Muzeu{
     super();
     this.Autor="Necunoscut";
     }
-    public Casa_memoriala(float ratting,double pret ,String adresa, int[] program,int nrAdulti,int nrCopii ,String nume, String tipul,int an,String Autor){
-    super(ratting,pret,adresa,nume,program,nrAdulti,nrCopii,tipul,an);
+    public Casa_memoriala(float rating,double pret ,String adresa, int[] program,String nume, String tipul,int an,String Autor){
+    super(rating,pret,adresa,nume,program,tipul,an);
     this.Autor=Autor;
     }
     public Casa_memoriala(Casa_memoriala m){
@@ -27,8 +27,8 @@ public class Casa_memoriala extends Muzeu{
     this.Autor=m.Autor;
     }
     
-    @Override
-  public void cumparBilet() throws Exception {
+    
+  public void cumparBilet(int nrCopii,int nrAdulti) throws Exception {
         System.out.println("******Bine ai venit la: " + nume+" ********");
         System.out.println("Pret la adulti este : " + pretadult + "lei.   \nPret la copii: " + pretcopil+" lei.");
 
@@ -41,18 +41,18 @@ public class Casa_memoriala extends Muzeu{
     }
 
     @Override
-    public void vreaSuvenir() {
-        System.out.println("La suvenir avem : Ghid " + all_pret[1] + " \n Carti- " + all_pret[2] + "\n Vedere -" + all_pret[3]);
+    public void vreaSuvenir(double[] all_pret) {
+        System.out.println("La suvenir avem : Ghid " + all_pret[0] + " \n Carti- " + all_pret[1] + "\n Vedere -" + all_pret[2]);
         String raspuns = in.next();
         switch (raspuns) {
             case "Ghid":
-                bill += all_pret[1];
+                bill += all_pret[0];
                 break;
             case "Carti":
-                bill += all_pret[2];
+                bill += all_pret[21];
                 break;
             case "Vedere":
-                bill += all_pret[3];
+                bill += all_pret[2];
                 break;
             default:
                 System.out.println("Din pacate,nu avem in stock:(");

@@ -20,14 +20,12 @@ import java.util.Scanner;
 
 class Muzeu extends Turism {
 //Nume muzeu
-    protected  String atractie ="Muzeu";
     
     //Date despre muzeu
     public int an;
     public String tipul;  
     
     //Date despre pret
-    protected double[] all_pret = new double[4]; 
     protected double pretcopil;
     protected double pretadult;
 
@@ -49,8 +47,8 @@ class Muzeu extends Turism {
     }
 
     //-cu param
-    public Muzeu(float rating, Double pret, String adresa, String nume, int program[], int nrAdulti, int nrCopii, String tipul, int an) {
-        super(rating, pret, adresa, nume, program, nrAdulti, nrCopii);
+    public Muzeu(float rating, Double pret, String adresa, String nume, int program[],  String tipul, int an) {
+        super(rating, pret, adresa, nume, program);
         this.tipul = tipul;
         this.an = an;
     }
@@ -62,18 +60,15 @@ class Muzeu extends Turism {
         an = m.an;
     }
 
-    public void setPret(double[] pret, int reducere) throws Exception {
-        if (pret.length != 4) {
-            throw new Exception("Lista de preturi nu a fost introdusa corect");
-        }
-        all_pret = pret;
+    public void setPret( int reducere) throws Exception {
+       
         this.pretcopil = this.pret - this.pret * reducere / 100;
         this.pretadult = this.pret;
     }
 
 
     //Buy ticket & Entry
-    public void cumparBilet() throws Exception {
+    public void cumparBilet(int nrCopii,int nrAdulti) throws Exception {
         System.out.println("\n\nBine ai venit la: " + nume);
              System.out.println("Pret la adulti este : " + pretadult + "lei.   \nPret la copii: " + pretcopil+" lei.");
         if (nrCopii <= 0 && nrAdulti <= 0) {
@@ -86,23 +81,23 @@ class Muzeu extends Turism {
 
 
     //Shop +Poze
-    public void vreaPoze() {
-        System.out.println("Taxa de poze este : " + all_pret[0]);
-        bill += all_pret[0];
+    public void vreaPoze(double pret) {
+        System.out.println("Taxa de poze este : " + pret);
+        bill += pret;
     }
 
-    public void vreaSuvenir() {
-        System.out.println("La suvenir avem : Breloc " + all_pret[1] + " \n Magneti- " + all_pret[2] + "\n Carti -" + all_pret[3]);
+    public void vreaSuvenir(double[] all_pret) {
+        System.out.println("La suvenir avem : Breloc " + all_pret[0] + " \n Magneti- " + all_pret[1] + "\n Carti -" + all_pret[2]);
         String raspuns = in.next();
         switch (raspuns) {
             case "Breloc":
-                bill += all_pret[1];
+                bill += all_pret[0];
                 break;
             case "Magneti":
-                bill += all_pret[2];
+                bill += all_pret[1];
                 break;
             case "Carti":
-                bill += all_pret[3];
+                bill += all_pret[2];
                 break;
             default:
                 System.out.println("Din pacate,nu avem in stock:(");
@@ -126,8 +121,7 @@ class Muzeu extends Turism {
     //@Override
     @Override
     public String toString() {
-        return  "\n Nume: " + this.nume
-                + "\nCategorie : " + this.tipul + "\nAnul infiintat: " + an + super.toString();
+        return  super.toString()+"\nTipul: "+this.tipul+"\n Anul infintarii: "+an;
     }
 
 }
