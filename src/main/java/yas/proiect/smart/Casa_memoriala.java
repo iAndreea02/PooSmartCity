@@ -11,11 +11,9 @@ Casa memoriabila
 
  */
 public class Casa_memoriala extends Muzeu{
-    private static String atarctie ="Casa memoriabila";
+    protected  String atarctie ="Casa memoriabila";
     public String Autor;
-    private int nrCamere;
-    private String[] camere;
-    
+  
     public Casa_memoriala(){
     super();
     this.Autor="Necunoscut";
@@ -29,17 +27,35 @@ public class Casa_memoriala extends Muzeu{
     this.Autor=m.Autor;
     }
     
-    public void setCamere(int nrCamere,String[] camere){
-        this.nrCamere=nrCamere;
-        this.camere =camere; 
+    @Override
+  public void cumparBilet() throws Exception {
+        System.out.println("******Bine ai venit la: " + nume+" ********");
+        System.out.println("Pret la adulti este : " + pretadult + "lei.   \nPret la copii: " + pretcopil+" lei.");
+
+        if (nrCopii <= 0 && nrAdulti <= 0) {
+            throw new Exception("Nu ati setata corect numarul de adulti si/sau copii");
+        }
+
+        bill += nrCopii * pretcopil + nrAdulti * pretadult;
+        System.out.println("Nr de adulti: " + nrAdulti + " \nNr de copii " + nrCopii + " va ajunge la pretul de " + (nrCopii * pretcopil + nrAdulti * pretadult) + " lei\n\n");
     }
-    
-    public void interior() {
-        System.out.println("Casa lui "+Autor+" este compus din: ");
-        int i = 0;
-        for (int j=0;j<this.nrCamere;j++) {
-            i++;
-            System.out.println(i + ". " + this.camere[j]);
+
+    @Override
+    public void vreaSuvenir() {
+        System.out.println("La suvenir avem : Ghid " + all_pret[1] + " \n Carti- " + all_pret[2] + "\n Vedere -" + all_pret[3]);
+        String raspuns = in.next();
+        switch (raspuns) {
+            case "Ghid":
+                bill += all_pret[1];
+                break;
+            case "Carti":
+                bill += all_pret[2];
+                break;
+            case "Vedere":
+                bill += all_pret[3];
+                break;
+            default:
+                System.out.println("Din pacate,nu avem in stock:(");
         }
     }
     

@@ -5,8 +5,10 @@
  */
 
 package yas.proiect.smart;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.Set;
 public abstract class Turism {
     float rating;
     double pret;
@@ -102,19 +104,24 @@ public abstract class Turism {
     public static void main(String[] args) {
         int program[]={12,18};
         double[] pret1={10.5,4.5,6.7,8.3};
-        String[] obj = {"Monede","Sabii","Arme din razboi","Documente oficiale"};
         Muzeu m = new Muzeu(4.6f,10.9,"Str Domneasca","Muzeul national",program,4,5,"Istorie",1980);
-        m.setMuzeu(obj);
+        Casa_memoriala cm =new Casa_memoriala(3.6f,7.8,"Str Domneasca",program,2,4,"Casa lui Alexandru Ioan Cuza","Istorie",1981,"Alexandru Ioan Cuza");
         
         try{
-          
-        m.setPret(pret1, 20);
+            System.out.println(cm);
+            cm.setPret(pret1, 20);
+            cm.cumparBilet();
+            cm.vreaPoze();
+            cm.vreaSaDoneze();
+            cm.getBill();   
+            
+            /* m.setPret(pret1, 20);
         m.cumparBilet();
-        m.vreaSaIntre();
         m.vreaPoze();
         m.vreaSaDoneze();
         m.vreaSuvenir();
         System.out.println("Factura pentru muzeu este : "+m.getBill() );
+        */
        }catch(Exception e){
            System.out.println(e);
        }

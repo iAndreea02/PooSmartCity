@@ -20,23 +20,22 @@ import java.util.Scanner;
 
 class Muzeu extends Turism {
 //Nume muzeu
-    private static String atractie ="Muzeu";
+    protected  String atractie ="Muzeu";
     
     //Date despre muzeu
     public int an;
     public String tipul;  
     
     //Date despre pret
-    private double[] all_pret = new double[4]; 
+    protected double[] all_pret = new double[4]; 
     protected double pretcopil;
     protected double pretadult;
 
     
-    private String[] obiecte;
-    private double bill = 0.0;
+    protected double bill = 0.0;
     
 //Date bilet
-    protected boolean bilet = false;
+   
 
     Scanner in = new Scanner(System.in);
     //Constructo -fara parametrii
@@ -72,40 +71,19 @@ class Muzeu extends Turism {
         this.pretadult = this.pret;
     }
 
-    public void setMuzeu(String[] obj) {
-
-        this.obiecte = obj;
-    }
 
     //Buy ticket & Entry
     public void cumparBilet() throws Exception {
-        System.out.println("Bine ai venit la: " + nume);
-        System.out.println("Pret la adulti este : " + pretadult + "   Pret la copii: " + pretcopil);
-
+        System.out.println("\n\nBine ai venit la: " + nume);
+             System.out.println("Pret la adulti este : " + pretadult + "lei.   \nPret la copii: " + pretcopil+" lei.");
         if (nrCopii <= 0 && nrAdulti <= 0) {
             throw new Exception("Nu ati setata corect numarul de adulti si/sau copii");
         }
 
         bill += nrCopii * pretcopil + nrAdulti * pretadult;
-        System.out.println("Nr de adulti: " + nrAdulti + " Nr de copii " + nrCopii + "va ajunge la pretul de " + (nrCopii * pretcopil + nrAdulti * pretadult) + " lei\n\n");
-        bilet = true;
+        System.out.println("Nr de adulti: " + nrAdulti + " lei. \nNr de copii: " + nrCopii + " lei va ajunge la pretul de " + (nrCopii * pretcopil + nrAdulti * pretadult) + " lei\n\n");
     }
 
-    public void vreaSaIntre() throws Exception {
-        if(bilet == false){
-            throw new Exception("Inainte sa intrati trebuie sa va luati bilet");
-        }
-        System.out.println("In interiorul cladirii veti descoperii urmatoarele lucrurui:");
-        int i = 0;
-        for (String iter : this.obiecte) {
-            i++;
-            System.out.println(i + ". " + iter);
-        }
-        System.out.println("\n Sper ca va placut sa vizitati muzeul nostru si va mai asteptam!"
-                + "\nO zi buna!:)");
-        bilet = false;
-
-    }
 
     //Shop +Poze
     public void vreaPoze() {
@@ -139,6 +117,8 @@ class Muzeu extends Turism {
 
     }
     
+    
+    //Bill
     public double getBill(){
         return bill;
     }
@@ -146,7 +126,7 @@ class Muzeu extends Turism {
     //@Override
     @Override
     public String toString() {
-        return "\n Nume: " + this.nume
+        return  "\n Nume: " + this.nume
                 + "\nCategorie : " + this.tipul + "\nAnul infiintat: " + an + super.toString();
     }
 
