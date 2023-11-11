@@ -9,7 +9,9 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
-public abstract class Turism {
+
+
+public abstract class Turism  {
     float rating;
     double pret;
     String adresa, nume;
@@ -27,7 +29,7 @@ public abstract class Turism {
         
     }
     
-    public Turism(float rating, Double pret, String adresa,String nume, int program[])
+    public Turism(String nume,String adresa,int program[],float rating, Double pret)
     {
         this.rating=rating;
         this.pret=pret;
@@ -78,15 +80,20 @@ public abstract class Turism {
         return rating;
     }
     
-  
+    public static void menu(){
+        System.out.println("**Bine ati venit in orasul Galati**");
+        System.out.println("Acesta va fi meniul principal de unde va puteti alege activitatile zilnice");
+         System.out.println("\n 1. Hotel/Apartament ");
+         System.out.println("\n 2. Restaurant ");
+         System.out.println("\n 3. Cafenele  ");
+         System.out.println("\n 4. Parcuri publice");
+         System.out.println("\n 5. Activitati in aer liber");
+         System.out.println("\n 6. Spital de stat / Clinica privata");
+    } 
     
    
 //  
     public static void main(String[] args) {
-        int program[]={12,18};
-        double[] pret1={10.5,4.5,6.7,8.3};
-        //Muzeu m = new Muzeu(4.6f,10.9,"Str Domneasca","Muzeul national",program,4,5,"Istorie",1980);
-        //Casa_memoriala cm =new Casa_memoriala(3.6f,7.8,"Str Domneasca",program,2,4,"Casa lui Alexandru Ioan Cuza","Istorie",1981,"Alexandru Ioan Cuza");
         
         try{
             

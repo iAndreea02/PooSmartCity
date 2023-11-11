@@ -47,8 +47,8 @@ class Muzeu extends Turism {
     }
 
     //-cu param
-    public Muzeu(float rating, Double pret, String adresa, String nume, int program[],  String tipul, int an) {
-        super(rating, pret, adresa, nume, program);
+    public Muzeu(String nume,String adresa,int program[],float rating, Double pret,  String tipul, int an) {
+        super(nume,adresa,program,rating,pret);
         this.tipul = tipul;
         this.an = an;
     }

@@ -18,8 +18,8 @@ public class Casa_memoriala extends Muzeu{
     super();
     this.Autor="Necunoscut";
     }
-    public Casa_memoriala(float rating,double pret ,String adresa, int[] program,String nume, String tipul,int an,String Autor){
-    super(rating,pret,adresa,nume,program,tipul,an);
+    public Casa_memoriala(String nume,String adresa,int program[],float rating, Double pret, String tipul,int an,String Autor){
+    super(nume,adresa,program,rating,pret,tipul,an);
     this.Autor=Autor;
     }
     public Casa_memoriala(Casa_memoriala m){
