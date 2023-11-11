@@ -66,7 +66,7 @@ class Muzeu extends Turism {
         this.pretadult = this.pret;
     }
 
-
+ 
     //Buy ticket & Entry
     public void cumparBilet(int nrCopii,int nrAdulti) throws Exception {
         System.out.println("\n\nBine ai venit la: " + nume);
