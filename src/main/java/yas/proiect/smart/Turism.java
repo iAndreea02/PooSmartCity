@@ -46,11 +46,15 @@ public abstract class Turism {
 
     public String toString() {
         return "Nume: " + nume + "\nAdresa: " + adresa + "\nRating: " + rating + "\nPret: " + pret + "\nProgram: "
-                 +this.program[0] + " - " + this.program[1];
+                + this.program[0] + " - " + this.program[1];
     }
 
     public String getAdresa() {
         return adresa;
+    }
+
+    public void setAdresa(String adresa) {
+        this.adresa = adresa;
     }
 
     public Double getPret() {
@@ -59,6 +63,10 @@ public abstract class Turism {
 
     public int[] getProgram() {
         return program;
+    }
+
+    public void setNume(String nume) {
+        this.nume = nume;
     }
 
     public String getNume() {
@@ -90,17 +98,18 @@ public abstract class Turism {
         boolean hai = false;
         int rasp;
         Scanner in = new Scanner(System.in);
-        int prog1[] = {7,22},prog2[]={12,18};
-        Parc_Public parc1 = new Parc_Public("Gradina Publica","Strada Domneasca",prog1,4.5f,0.0,10,3,2);
-        Muzeu muzeu1 = new Muzeu("Muzeul din Gradina Botanica","Faleza Galati",prog2,4.9f,15.0,"Stiinte ale naturii",1930);
-        Casa_memoriala casa1 = new Casa_memoriala("Casa Cuza Vodă","Strada Alexandru Ioan Cuza",prog2,4.3f,12.6,"Istorie",1939,"Alexandru Ioan Cuza",10,"LA 158 DE ANI DE LA UNIREA PRINCIPATELOR ROMÂNE");
-       
-            try{
-                System.out.println(parc1+"\n\n"+muzeu1+"\n\n"+casa1);
-            }catch (Exception e) {
-                System.out.println(e);
-            }
-        }
+        int prog1[] = {7, 22}, prog2[] = {12, 18};
+        Parc_Public parc1 = new Parc_Public("Gradina Publica", "Strada Domneasca", prog1, 4.5f, 0.0, 10, 3, 2);
+        Parc_Public parc0 = new Parc_Public();
+        Parc_Public parc_copy = new Parc_Public(parc1);
+        Muzeu muzeu1 = new Muzeu("Muzeul din Gradina Botanica", "Faleza Galati", prog2, 4.9f, 15.0, "Stiinte ale naturii", 1930);
+        Muzeu muzeu0 = new Muzeu();
+        Muzeu muzeu_copy = new Muzeu(muzeu1);
+        Casa_memoriala casa1 = new Casa_memoriala("Casa Cuza Vodă", "Strada Alexandru Ioan Cuza", prog2, 4.3f, 12.6, "Istorie", 1939, "Alexandru Ioan Cuza", 10, "LA 158 DE ANI DE LA UNIREA PRINCIPATELOR ROMÂNE");
+        
+        
+        muzeu_copy.setNume("Gradina Botanica");
+        System.out.println(muzeu1 + "\n\n\n" + muzeu0 + "\n\n\n" + muzeu_copy);
+        
     }
-
-
+}

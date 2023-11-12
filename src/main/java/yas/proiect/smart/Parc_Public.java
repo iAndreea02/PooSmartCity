@@ -54,7 +54,12 @@ public class Parc_Public extends Turism {
         }
         return true;
     }
-
+    public void setBanci(int nr_banci){
+        this.nr_banci =nr_banci;
+    }
+    public void setToalete(int nr_toalete){
+    this.nr_toalete=nr_toalete;
+    }
     public void folosescToaleta(double taxa) throws Exception {
         if (nr_toalete == 0) {
             throw new Exception("Nu sunt toatele in parc :(");
