@@ -99,17 +99,16 @@ public abstract class Turism {
         int rasp;
         Scanner in = new Scanner(System.in);
         int prog1[] = {7, 22}, prog2[] = {12, 18};
-        Parc_Public parc1 = new Parc_Public("Gradina Publica", "Strada Domneasca", prog1, 4.5f, 0.0, 10, 3, 2);
+        Parc_Public parc1 = new Parc_Public("Gradina Publica", "Strada Domneasca", prog1, 4.5f, 0.0, 988.0);
         Parc_Public parc0 = new Parc_Public();
         Parc_Public parc_copy = new Parc_Public(parc1);
         Muzeu muzeu1 = new Muzeu("Muzeul din Gradina Botanica", "Faleza Galati", prog2, 4.9f, 15.0, "Stiinte ale naturii", 1930);
         Muzeu muzeu0 = new Muzeu();
         Muzeu muzeu_copy = new Muzeu(muzeu1);
         Casa_memoriala casa1 = new Casa_memoriala("Casa Cuza Vodă", "Strada Alexandru Ioan Cuza", prog2, 4.3f, 12.6, "Istorie", 1939, "Alexandru Ioan Cuza", 10, "LA 158 DE ANI DE LA UNIREA PRINCIPATELOR ROMÂNE");
+        Parc_Public pp=new Activitati();
         
-        
-        muzeu_copy.setNume("Gradina Botanica");
-        System.out.println(muzeu1 + "\n\n\n" + muzeu0 + "\n\n\n" + muzeu_copy);
+        //System.out.println(muzeu1 + "\n\n\n" + muzeu0 + "\n\n\n" + muzeu_copy);
         
     }
 }

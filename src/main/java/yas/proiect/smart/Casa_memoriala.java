@@ -70,6 +70,16 @@ public class Casa_memoriala extends Muzeu {
                 System.out.println("Din pacate,nu avem in stock:(");
         }
     }
+    
+    public void vreaSaDoneze() {
+        double donare;
+        System.out.println("Vizitatorii vor dona: " );
+        donare=in.nextDouble();
+        bill += donare;
+
+    }
+    
+    
 
     @Override
     public String toString() {

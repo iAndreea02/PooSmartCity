@@ -14,49 +14,32 @@ import java.util.ArrayList;
 
 public class Parc_Public extends Turism {
 
-    public int nr_banci;
     public int nr_toalete;
-    public int nr_magazine;
-    //protected double[] all_pret;
+    public double suprafata;
     protected double bill = 0.0;
-    //Activitati
+    protected int nr_biciclete = 0;
     private boolean masini_copii;
     private boolean trambulina;
-    private boolean caruser;
-    private boolean biciclete;
-
+    ///private String[] other;
+    
     public Parc_Public() {
         super();
-        nr_banci = 0;
-        nr_toalete = 0;
-        nr_magazine = 0;
+        suprafata=0;
     }
 
-    public Parc_Public(String nume, String adresa, int program[], float rating, Double pret, int nr_banci, int nr_toalete, int nr_magazine) {
+    public Parc_Public(String nume, String adresa, int program[], float rating, Double pret,double suprafata ) {
         super(nume, adresa, program, rating, pret);
-        this.nr_banci = nr_banci;
-        this.nr_toalete = nr_toalete;
-        this.nr_magazine = nr_magazine;
+        this.suprafata=suprafata;
 
     }
 
     public Parc_Public(Parc_Public P) {
         super(P);
-        this.nr_banci = P.nr_banci;
-        this.nr_toalete = P.nr_toalete;
-        this.nr_magazine = P.nr_magazine;
+        this.suprafata = P.suprafata;
 
     }
 
-    public boolean isBanci() {
-        if (this.nr_banci == 0) {
-            return false;
-        }
-        return true;
-    }
-    public void setBanci(int nr_banci){
-        this.nr_banci =nr_banci;
-    }
+  
     public void setToalete(int nr_toalete){
     this.nr_toalete=nr_toalete;
     }
@@ -67,36 +50,42 @@ public class Parc_Public extends Turism {
         System.out.println("\nTaxa la toaleta: " + taxa);
         bill += taxa;
     }
-
-    public void vreaInghetata(double pret) throws Exception {
-        if (nr_magazine == 0) {
-            throw new Exception("Nu sunt magazine cu inghetata in parc :(");
-        }
-        System.out.println(" Poftiti la inghetata. Pretul este: " + pret + "\n\n");
-        bill += pret;
+    
+    public void setBiciclete(int nr_biciclete){
+    if(nr_biciclete<0)
+    {System.out.println("Ati introdus o valoare negativa");
+        System.exit(1);
     }
-
+        this.nr_biciclete=nr_biciclete;
+    }
+    public void inchiriezBicicleta(int ora,int nr_adulti,int nr_copii){
+    if(this.nr_biciclete ==0)
+        System.out.println("Nu aveti biciclete disponibile:(");
+    else 
+    {   
+        System.out.println("Ati inchiriat "+(nr_adulti+nr_copii)+"bicicleta/e.\n Pret/ora la *adult: " +pret+ " *copii: " +(pret-0.2*pret));
+        bill+=(pret*nr_adulti+pret*nr_copii)*ora;
+        System.out.println("Suma totata pentru "+ora+ "ora/e: "+((pret*nr_adulti+pret*nr_copii)*ora));
+    }   
+    }
+        
     public double getBill() {
         return bill;
     }
 
     public String toString() {
-        return super.toString() + "\nNr de *toalete " + this.nr_toalete + "  *banci " + this.nr_banci
-                + "  *magazin cu inghetata " + this.nr_magazine;
+        return super.toString() +"\nSuprafata: " +this.suprafata+"\nNr de *toalete " + this.nr_toalete ;
     }
-
-    //Activitati
-    public void setActivitati(boolean masini_copii, boolean trambulina, boolean caruser, boolean biciclete) {
+    
+    public void setActivitati(boolean masini_copii, boolean trambulina) {
         this.masini_copii = masini_copii;
         this.trambulina = trambulina;
-        this.caruser = caruser;
-        this.biciclete = biciclete;
+        
     }
 
     public String isActivitati() {
         return "\n ***Activitati***"
-                + "\n*Masini pentru copii: " + (this.masini_copii ? "Da" : "Nu") + "\n*Tambulina: " + (this.trambulina ? "Da" : "Nu")
-                + "\n*Caruser: " + (this.caruser ? "Da" : "Nu") + "\n*Biciclete de inchiriat: " + (this.biciclete ? "Da" : "Nu");
+                + "\n*Masini pentru copii: " + (this.masini_copii ? "Da" : "Nu") + "\n*Tambulina: " + (this.trambulina ? "Da" : "Nu");
     }
 
     public void vreaMasiniCopii(double pret, int nr_copii) throws Exception {
@@ -120,25 +109,6 @@ public class Parc_Public extends Turism {
         System.out.println("\nAti platit o intrare in trambulina.Pret: " + pret);
         this.bill += pret * nr_copii;
     }
-
-    public void vreaCaruser(double pret, int nr_copii, int nr_adulti) throws Exception {
-        if (this.caruser == false) {
-            throw new Exception("In acest parc nu avem caruser");
-        }
-        System.out.println("\nAti platit un bilet pentru caruser.\n Pret:  " + pret);
-        double pret_copil = pret - 25 * pret / 100;
-        this.bill += pret * nr_adulti + pret_copil * nr_copii;
-    }
-
-    public void vreaBicicleta(double pret, int nr_copii, int nr_adulti, int ore) throws Exception {
-        if (this.biciclete == false) {
-            throw new Exception("In acest parc nu avem biciclete");
-        }
-        double pret_copil = pret - 30 * pret / 100;
-        System.out.println("\nAti inchiriat o bicicleta.\n" + "Pret / ora:  *adulti: " + pret + "  *copii: " + pret_copil);
-
-        this.bill += (pret * nr_adulti + pret_copil * nr_copii) * ore;
-
-    }
+    
 
 }
