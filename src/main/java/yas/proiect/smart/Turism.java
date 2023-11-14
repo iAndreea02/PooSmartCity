@@ -12,14 +12,15 @@ import java.util.Set;
 
 public abstract class Turism {
 
-    float rating;
-    double pret;
-    String adresa, nume;
-    int[] program = new int[2];
-
+    public float rating;
+    protected double[] pret = new double[2];
+    public String adresa, nume;
+    public int[] program = new int[2];
+    protected double bill = 0.0;
     public Turism() {
         rating = 0;
-        pret = 0.0;
+        pret[0]=0.0;
+        pret[1]=0.0;
         adresa = " ";
         nume = " ";
         program[0] = 0;
@@ -27,7 +28,7 @@ public abstract class Turism {
 
     }
 
-    public Turism(String nume, String adresa, int program[], float rating, Double pret) {
+    public Turism(String nume, String adresa, int program[], float rating, double[] pret) {
         this.rating = rating;
         this.pret = pret;
         this.adresa = adresa;
@@ -45,37 +46,40 @@ public abstract class Turism {
     }
 
     public String toString() {
-        return "Nume: " + nume + "\nAdresa: " + adresa + "\nRating: " + rating + "\nPret: " + pret + "\nProgram: "
+        return "Nume: " + nume + "\nAdresa: " + adresa + "\nRating: " + rating + "\nPret  -adult: " + pret[1]+"   -copii: "+pret[0] + "\nProgram: "
                 + this.program[0] + " - " + this.program[1];
     }
-
+/*
     public String getAdresa() {
         return adresa;
     }
-
-    public void setAdresa(String adresa) {
-        this.adresa = adresa;
-    }
-
-    public Double getPret() {
+    
+     public double[] getPret() {
         return pret;
     }
-
-    public int[] getProgram() {
+      public int[] getProgram() {
         return program;
+    }
+      public String getNume() {
+        return nume;
+    }
+       public float getRating() {
+        return rating;
+    }
+  */   
+    public void setAdresa(String adresa) {
+        this.adresa = adresa;
     }
 
     public void setNume(String nume) {
         this.nume = nume;
     }
-
-    public String getNume() {
-        return nume;
+    public double getBill() {
+        return bill;
     }
+    
 
-    public float getRating() {
-        return rating;
-    }
+   
 
     public static void menu() {
         System.out.println("**Bine ati venit in orasul Galati**");
@@ -93,22 +97,4 @@ public abstract class Turism {
         System.out.println("** 11. Parasiti meniul principal **");
     }
 
-//  
-    public static void main(String[] args) {
-        boolean hai = false;
-        int rasp;
-        Scanner in = new Scanner(System.in);
-        int prog1[] = {7, 22}, prog2[] = {12, 18};
-        Parc_Public parc1 = new Parc_Public("Gradina Publica", "Strada Domneasca", prog1, 4.5f, 0.0, 988.0);
-        Parc_Public parc0 = new Parc_Public();
-        Parc_Public parc_copy = new Parc_Public(parc1);
-        Muzeu muzeu1 = new Muzeu("Muzeul din Gradina Botanica", "Faleza Galati", prog2, 4.9f, 15.0, "Stiinte ale naturii", 1930);
-        Muzeu muzeu0 = new Muzeu();
-        Muzeu muzeu_copy = new Muzeu(muzeu1);
-        Casa_memoriala casa1 = new Casa_memoriala("Casa Cuza Vodă", "Strada Alexandru Ioan Cuza", prog2, 4.3f, 12.6, "Istorie", 1939, "Alexandru Ioan Cuza", 10, "LA 158 DE ANI DE LA UNIREA PRINCIPATELOR ROMÂNE");
-        Parc_Public pp=new Activitati();
-        
-        //System.out.println(muzeu1 + "\n\n\n" + muzeu0 + "\n\n\n" + muzeu_copy);
-        
-    }
 }

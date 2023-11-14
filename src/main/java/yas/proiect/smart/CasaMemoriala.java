@@ -5,53 +5,55 @@
  */
 package yas.proiect.smart;
 
+import java.util.Scanner;
+
 /*
 Casa memoriabila 
 -  
 
  */
-public class Casa_memoriala extends Muzeu {
+public class CasaMemoriala extends Turism {
 
-    public String Autor;
-    private int nr_camere;
-    private String EvenimentMemorial;
-
-    public Casa_memoriala() {
+    public String Proprietar;
+    public String EvenimentMemorial;
+    public String tipCladire;
+    public CasaMemoriala() {
         super();
-        this.Autor = "Necunoscut";
-         this.nr_camere = 0;
+        this.Proprietar = "Necunoscut";
         this.EvenimentMemorial="Nimic";
+        tipCladire = "Necunoscut";
     }
 
-    public Casa_memoriala(String nume, String adresa, int program[], float rating, Double pret, String tipul, int an, String Autor, int nr_camere,String EvenimentMemoriala) {
-        super(nume, adresa, program, rating, pret, tipul, an);
-        this.Autor = Autor;
-        this.nr_camere = nr_camere;
+    public CasaMemoriala(String nume, String adresa, int program[], float rating, double[] pret, String tipCladire, int an, String Proprietar,String EvenimentMemoriala) {
+        super(nume, adresa, program, rating, pret);
+        this.Proprietar = Proprietar;
         this.EvenimentMemorial=EvenimentMemoriala;
+        this.tipCladire=tipCladire;
     }
 
-    public Casa_memoriala(Casa_memoriala m) {
+    public CasaMemoriala(CasaMemoriala m) {
         super(m);
-        this.Autor = m.Autor;
-         this.nr_camere = m.nr_camere;
+        this.Proprietar = m.Proprietar;
         this.EvenimentMemorial=m.EvenimentMemorial;
+        this.tipCladire=m.tipCladire;
     }
 
     public void cumparBilet(int nrCopii, int nrAdulti) throws Exception {
         System.out.println("******Bine ai venit la: " + nume + " ********");
-        System.out.println("Pret la adulti este : " + pretadult + "lei.   \nPret la copii: " + pretcopil + " lei.");
+        System.out.println("Pret la adulti este : " + pret[1] + "lei.   \nPret la copii: " + pret[0] + " lei.");
 
         if (nrCopii <= 0 && nrAdulti <= 0) {
             throw new Exception("Nu ati setata corect numarul de adulti si/sau copii");
         }
 
-        bill += nrCopii * pretcopil + nrAdulti * pretadult;
-        System.out.println("Nr de adulti: " + nrAdulti + " \nNr de copii " + nrCopii + " va ajunge la pretul de " + (nrCopii * pretcopil + nrAdulti * pretadult) + " lei\n\n");
+        bill += nrCopii * pret[0] + nrAdulti * pret[1];
+        System.out.println("Nr de adulti: " + nrAdulti + " \nNr de copii " + nrCopii + " va ajunge la pretul de " + (nrCopii * pret[0] + nrAdulti * pret[1]) + " lei\n\n");
     }
 
-    @Override
+  
     public void vreaSuvenir(double[] all_pret) {
         System.out.println("La suvenir avem : Ghid " + all_pret[0] + " \n Carti- " + all_pret[1] + "\n Vedere -" + all_pret[2]);
+       Scanner in=new Scanner(System.in);
         String raspuns = in.next();
         System.out.println("Cate bucati dori? ");
         int nr = in.nextInt();
@@ -71,10 +73,8 @@ public class Casa_memoriala extends Muzeu {
         }
     }
     
-    public void vreaSaDoneze() {
-        double donare;
+    public void vreaSaDoneze(double donare) {
         System.out.println("Vizitatorii vor dona: " );
-        donare=in.nextDouble();
         bill += donare;
 
     }
@@ -83,7 +83,7 @@ public class Casa_memoriala extends Muzeu {
 
     @Override
     public String toString() {
-        return super.toString() + "\n Autor: " + Autor+"\nNumarul de camere: "+this.nr_camere+"\nEveniment memorial: "+this.EvenimentMemorial;
+        return super.toString() +"\nTip cladire: "+this.tipCladire +"\n Autor: " + Proprietar+"\nEveniment memorial: "+this.EvenimentMemorial;
     }
 
 }

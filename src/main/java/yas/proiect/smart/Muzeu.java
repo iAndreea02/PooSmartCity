@@ -20,21 +20,14 @@ import java.util.Scanner;
 
 class Muzeu extends Turism {
 //Nume muzeu
-    
+
     //Date despre muzeu
     public int an;
-    public String tipul;  
-    
-    //Date despre pret
-    protected double pretcopil;
-    protected double pretadult;
-
-    
+    public String tipul;
+    public int suprafata;
     protected double bill = 0.0;
-    
-//Date bilet
-   
 
+//Date bilet
     Scanner in = new Scanner(System.in);
     //Constructo -fara parametrii
 
@@ -43,42 +36,37 @@ class Muzeu extends Turism {
         super();
         tipul = "Necunoscut";
         an = 0;
+        suprafata = 0;
         // tipul=null;
     }
 
     //-cu param
-    public Muzeu(String nume,String adresa,int program[],float rating, Double pret,  String tipul, int an) {
-        super(nume,adresa,program,rating,pret);
+    public Muzeu(String nume, String adresa, int program[], float rating, double[] pret, String tipul, int an, int suprafata) {
+        super(nume, adresa, program, rating, pret);
         this.tipul = tipul;
         this.an = an;
+        this.suprafata = suprafata;
     }
 
     //-de copiere
     public Muzeu(Muzeu m) {
         super(m);
-        tipul = m.tipul;
-        an = m.an;
+        this.tipul = m.tipul;
+        this.an = m.an;
+        this.suprafata = m.suprafata;
     }
 
-    public void setPret( int reducere) throws Exception {
-       
-        this.pretcopil = this.pret - this.pret * reducere / 100;
-        this.pretadult = this.pret;
-    }
-
- 
     //Buy ticket & Entry
-    public void cumparBilet(int nrCopii,int nrAdulti) throws Exception {
+    public void cumparBilet(int nrCopii, int nrAdulti) throws Exception {
         System.out.println("\n\nBine ai venit la: " + nume);
-             System.out.println("Pret la adulti este : " + pretadult + "lei.   \nPret la copii: " + pretcopil+" lei.");
+        System.out.println("Pret la adulti este : " + pret[1] + "lei.   \nPret la copii: " + pret[0] + " lei.");
         if (nrCopii <= 0 && nrAdulti <= 0) {
             throw new Exception("Nu ati setata corect numarul de adulti si/sau copii");
         }
 
-        bill += nrCopii * pretcopil + nrAdulti * pretadult;
-        System.out.println("Nr de adulti: " + nrAdulti + " lei. \nNr de copii: " + nrCopii + " lei va ajunge la pretul de " + (nrCopii * pretcopil + nrAdulti * pretadult) + " lei\n\n");
+        bill += nrCopii * pret[0] + nrAdulti * pret[1];
+        System.out.println("Nr de adulti: " + nrAdulti + " lei. \nNr de copii: " + nrCopii + " lei va ajunge la pretul de " + (nrCopii * pret[0] + nrAdulti * pret[1]) + " lei\n\n");
     }
-
 
     //Shop +Poze
     public void vreaPoze(double pret) {
@@ -104,24 +92,18 @@ class Muzeu extends Turism {
         }
     }
 
-    public void vreaSaDoneze() {
-        double donare;
-        System.out.println("Vizitatorii vor dona: " );
-        donare=in.nextDouble();
+    public void vreaSaDoneze(double donare) {
+
+        System.out.println("Vizitatorii vor dona: ");
+        donare = in.nextDouble();
         bill += donare;
 
     }
-    
-    
-    //Bill
-    public double getBill(){
-        return bill;
-    }
-    
+
     //@Override
     @Override
     public String toString() {
-        return  super.toString()+"\nTipul: "+this.tipul+"\n Anul infintarii: "+an;
+        return super.toString() + "\nCategorie: " + this.tipul + "\n Anul infintat: " + an + "\nSuprafata: " + this.suprafata;
     }
 
 }
