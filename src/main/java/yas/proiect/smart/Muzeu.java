@@ -25,7 +25,6 @@ class Muzeu extends Turism {
     public int an;
     public String tipul;
     public int suprafata;
-    protected double bill = 0.0;
 
 //Date bilet
     Scanner in = new Scanner(System.in);
@@ -57,15 +56,11 @@ class Muzeu extends Turism {
     }
 
     //Buy ticket & Entry
-    public void cumparBilet(int nrCopii, int nrAdulti) throws Exception {
-        System.out.println("\n\nBine ai venit la: " + nume);
-        System.out.println("Pret la adulti este : " + pret[1] + "lei.   \nPret la copii: " + pret[0] + " lei.");
-        if (nrCopii <= 0 && nrAdulti <= 0) {
-            throw new Exception("Nu ati setata corect numarul de adulti si/sau copii");
-        }
-
+    public void cumparBilet(int nrCopii, int nrAdulti) {
+       System.out.println("\n\nBine ai venit la: " + nume);
+       System.out.println("Pret la adulti este : " + pret[1] + "lei.   \nPret la copii: " + pret[0] + " lei.");
         bill += nrCopii * pret[0] + nrAdulti * pret[1];
-        System.out.println("Nr de adulti: " + nrAdulti + " lei. \nNr de copii: " + nrCopii + " lei va ajunge la pretul de " + (nrCopii * pret[0] + nrAdulti * pret[1]) + " lei\n\n");
+       System.out.println("Nr de adulti: " + nrAdulti + " lei. \nNr de copii: " + nrCopii + " lei va ajunge la pretul de " + (nrCopii * pret[0] + nrAdulti * pret[1]) + " lei\n\n");
     }
 
     //Shop +Poze
