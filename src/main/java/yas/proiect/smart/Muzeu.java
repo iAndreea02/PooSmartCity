@@ -15,6 +15,8 @@ Muzeu
  */
 package yas.proiect.smart;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 // String[] tipul = {"Casa memoriabila","Muzeu"};
 
@@ -25,7 +27,7 @@ class Muzeu extends Turism {
     public int an;
     public String tipul;
     public int suprafata;
-
+    protected double[] allPret;
 //Date bilet
     Scanner in = new Scanner(System.in);
     //Constructo -fara parametrii
@@ -40,11 +42,12 @@ class Muzeu extends Turism {
     }
 
     //-cu param
-    public Muzeu(String nume, String adresa, int program[], float rating, double[] pret, String tipul, int an, int suprafata) {
+    public Muzeu(String nume, String adresa, int program[], float rating, double[] pret, String tipul, int an, int suprafata,double[] allPret) {
         super(nume, adresa, program, rating, pret);
         this.tipul = tipul;
         this.an = an;
         this.suprafata = suprafata;
+        this.allPret=allPret;
     }
 
     //-de copiere
@@ -53,6 +56,7 @@ class Muzeu extends Turism {
         this.tipul = m.tipul;
         this.an = m.an;
         this.suprafata = m.suprafata;
+        this.allPret=m.allPret;
     }
 
     //Buy ticket & Entry
@@ -62,25 +66,32 @@ class Muzeu extends Turism {
         bill += nrCopii * pret[0] + nrAdulti * pret[1];
        System.out.println("Nr de adulti: " + nrAdulti + " lei. \nNr de copii: " + nrCopii + " lei va ajunge la pretul de " + (nrCopii * pret[0] + nrAdulti * pret[1]) + " lei\n\n");
     }
-
+    public double showThatPrice(String nume){
+    Map<String,Double> m =new HashMap<>();
+    m.put("Poze",allPret[0]);
+    m.put("Breloc",allPret[1]);
+    m.put("Magneti",allPret[2]);
+    m.put("Carti",allPret[3]);
+        return m.get(nume);
+    }
     //Shop +Poze
-    public void vreaPoze(double pret) {
-        System.out.println("Taxa de poze este : " + pret);
-        bill += pret;
+    public void vreaPoze() {
+        System.out.println("Taxa de poze este : " + allPret[0]);
+        bill += allPret[0];
     }
 
-    public void vreaSuvenir(double[] all_pret) {
-        System.out.println("La suvenir avem : Breloc " + all_pret[0] + " \n Magneti- " + all_pret[1] + "\n Carti -" + all_pret[2]);
-        String raspuns = in.next();
+    public void vreaSuvenir(String raspuns) {
+        System.out.println("La suvenir avem : Breloc " + allPret[1] + " \n Magneti- " + allPret[2] + "\n Carti -" + allPret[3]);
+        //String raspuns = in.next();
         switch (raspuns) {
             case "Breloc":
-                bill += all_pret[0];
+                bill += allPret[1];
                 break;
             case "Magneti":
-                bill += all_pret[1];
+                bill += allPret[2];
                 break;
             case "Carti":
-                bill += all_pret[2];
+                bill += allPret[3];
                 break;
             default:
                 System.out.println("Din pacate,nu avem in stock:(");
@@ -89,8 +100,8 @@ class Muzeu extends Turism {
 
     public void vreaSaDoneze(double donare) {
 
-        System.out.println("Vizitatorii vor dona: ");
-        donare = in.nextDouble();
+        System.out.println("Vizitatorii vor dona: "+donare);
+      //  donare = in.nextDouble();
         bill += donare;
 
     }
