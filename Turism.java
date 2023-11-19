@@ -1,9 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package proiect.proiectpoo;
+package ugal.ro.smartcity;
 
 import java.util.HashSet;
 import java.util.Map;
@@ -13,14 +8,15 @@ import java.util.Set;
 public abstract class Turism {
 
     public float rating;
-    protected double[] pret = new double[2];
+    protected double[] pret;
     public String adresa, nume;
     public int[] program = new int[2];
-    protected double bill = 0.0;
-    public Turism() {
+    protected double factura = 0.0;
+    
+    public Turism() 
+    {
         rating = 0;
-        pret[0]=0.0;
-        pret[1]=0.0;
+        pret=new double[]{0.0,0.0};
         adresa = " ";
         nume = " ";
         program[0] = 0;
@@ -28,7 +24,8 @@ public abstract class Turism {
 
     }
 
-    public Turism(String nume, String adresa, int program[], float rating, double[] pret) {
+    public Turism(String nume, String adresa, int program[], float rating, double[] pret)
+    {
         this.rating = rating;
         this.pret = pret;
         this.adresa = adresa;
@@ -36,7 +33,8 @@ public abstract class Turism {
         this.program = program;
     }
 
-    public Turism(Turism copie) {
+    public Turism(Turism copie)
+    {
         rating = copie.rating;
         pret = copie.pret;
         adresa = copie.adresa;
@@ -45,8 +43,9 @@ public abstract class Turism {
 
     }
 
-    public String toString() {
-        return "Nume: " + nume + "\nAdresa: " + adresa + "\nRating: " + rating + "\nPret  -adult: " + pret[1]+"   -copii: "+pret[0] + "\nProgram: "
+    public String toString() 
+    {
+        return "Nume: " + nume + "\nAdresa: " + adresa + "\nRating: " + rating + "\nPret  -adult: " + pret[0]+"   -copii au reducere"+"\nProgram: "
                 + this.program[0] + " - " + this.program[1];
     }
 /*
@@ -67,7 +66,8 @@ public abstract class Turism {
         return rating;
     }
   */   
-    public void setAdresa(String adresa) {
+    public void setAdresa(String adresa) 
+    {
         this.adresa = adresa;
     }
 
@@ -75,7 +75,7 @@ public abstract class Turism {
         this.nume = nume;
     }
     public double getBill() {
-        return bill;
+        return factura;
     }
     
 
