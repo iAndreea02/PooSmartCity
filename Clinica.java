@@ -1,5 +1,6 @@
 
 package ugal.ro.smartcity;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -7,21 +8,22 @@ public class Clinica extends Turism {
     
     private String specializare;
     public double[] pret;
+    public String[] servicii;
     
     public Clinica()
     {
         super();
-        specializare="";
+        servicii=new String[]{"Nimic"};
     }
     
-    public Clinica(String nume, String adresa, int program[], float rating, double[] pret, String specializare) {
+    public Clinica(String nume, String adresa, int program[], float rating, double[] pret, String[] servicii) {
         super(nume, adresa, program, rating, pret);
-        this.specializare = specializare;
+        this.servicii=servicii;
     }
 
     public Clinica(Clinica copie) {
         super(copie);
-        specializare = copie.specializare;
+        servicii=copie.servicii;
     }
   
      public double preturi(String specializare){
@@ -43,27 +45,27 @@ public class Clinica extends Turism {
         {
              switch (specializare)
                  {
-                     case "Oftamologie" -> factura += pret[0];
-                     case "ORL" -> factura += pret[1];
-                    case "Radiologie" -> factura += pret[2];
-                    case "Nutritionist" -> factura += pret[3];
-                    case "Pediatrie" -> factura += pret[4];
-                    case "Psihoterapie" -> factura += pret[5];
+                     case "Oftamologie" -> bill += pret[0];
+                     case "ORL" -> bill += pret[1];
+                    case "Radiologie" -> bill += pret[2];
+                    case "Nutritionist" -> bill += pret[3];
+                    case "Pediatrie" -> bill += pret[4];
+                    case "Psihoterapie" -> bill += pret[5];
                     default -> System.out.println("Nu avem aceasta specialitate.");
                  }
-             factura-=50;
+             bill-=50;
         }
         
         if(nrAdulti!=0)
         {
              switch (specializare)
                  {
-                     case "Oftamologie" -> factura += pret[0];
-                     case "ORL" -> factura += pret[1];
-                    case "Radiologie" -> factura += pret[2];
-                    case "Nutritionist" -> factura += pret[3];
-                    case "Pediatrie" -> factura += pret[4];
-                    case "Psihoterapie" -> factura += pret[5];
+                     case "Oftamologie" -> bill += pret[0];
+                     case "ORL" -> bill += pret[1];
+                    case "Radiologie" -> bill += pret[2];
+                    case "Nutritionist" -> bill += pret[3];
+                    case "Pediatrie" -> bill += pret[4];
+                    case "Psihoterapie" -> bill += pret[5];
                     default -> System.out.println("Nu avem aceasta specialitate.");
                  }
         }
@@ -77,12 +79,19 @@ public class Clinica extends Turism {
             throw new Exception("Nu uitati: Copiii nu pot fi lasati singuri!");
         }
         
-        System.out.println("Factura voastra este de "+factura+" lei.");
+        System.out.println("Factura voastra este de "+bill+" lei.");
         
     }
     
     @Override
     public String toString() {
         return super.toString() + "\nSpecializare: " + specializare;
+    }
+    
+    public static void AfisareServicii(ArrayList<Clinica> vectorClinica,String servicii,int program)
+    {
+         for(Clinica clinica:vectorClinica)
+         {if(clinica.servicii.equals(servicii) && clinica.program[0]>=program) 
+             System.out.println(clinica);}
     }
 }
