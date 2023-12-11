@@ -4,6 +4,8 @@
  */
 package proiect.proiectpoo;
 
+import java.util.ArrayList;
+
 public class Apartament extends Turism{
   
     int nrcamere;
@@ -143,5 +145,11 @@ public class Apartament extends Turism{
        return nrnopti*(pret[0]*nrAdulti+pret[0]/2*nrCopii);
     
 }
+    public static void AfisareNrloc(ArrayList<Apartament> vectorApartament, int nrloc, boolean aerconditionat) {
+        for(Apartament apartament:vectorApartament){
+         if(apartament.nrlocuri==nrloc && apartament.aerconditionat==aerconditionat) 
+             System.out.println(apartament);
+      }
+    }
 
 }

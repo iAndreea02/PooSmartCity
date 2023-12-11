@@ -4,6 +4,7 @@
  */
 package proiect.proiectpoo;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Hotel extends Turism{
@@ -134,4 +135,22 @@ public class Hotel extends Turism{
         this.animale = animale;
     }
    
+    
+  public ArrayList AfisareDupaOptiune (ArrayList <Hotel> vectorHotel){
+      
+      return vectorHotel;
+  }
+  
+  public static void AfisareRating (ArrayList<Hotel> vectorHotel,float rating, boolean piscina){
+      
+      
+      for(Hotel hotel:vectorHotel){
+         if(hotel.rating>rating && hotel.piscina==piscina) 
+             System.out.println(hotel);
+      }
+      
+  }
+          
+    
+    
 }
