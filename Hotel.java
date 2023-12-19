@@ -2,10 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package proiect.proiectpoo;
+package Hotel;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import yas.proiect.smart.Turism;
+import yas.proiect.smart.Turism;
 
 public class Hotel extends Turism{
    
@@ -83,6 +85,30 @@ public class Hotel extends Turism{
            System.out.println("Hotelul "+ nume+ " este petfriendly.");
        else System.out.println("Hotelul "+nume+ " NU este petfriendly.");
    }
+    public String Specificatii(){  /// ACTUALIZARE PT INTERFATA
+       StringBuilder result = new StringBuilder(); 
+       if (restaurant)
+            result.append("Hotelul ").append(nume).append(" are restaurant.\n");
+        else result.append("Hotelul ").append(nume).append(" NU are restaurant.\n");
+
+        if (spa)
+            result.append("Hotelul ").append(nume).append(" are spa.\n");
+        else result.append("Hotelul ").append(nume).append(" NU are spa.\n");
+
+        if (piscina)
+            result.append("Hotelul ").append(nume).append(" are piscina.\n");
+        else result.append("Hotelul ").append(nume).append(" NU are piscina.\n");
+
+        if (copii)
+            result.append("Hotelul ").append(nume).append(" primeste copii.\n");
+        else result.append("Hotelul ").append(nume).append(" NU primeste copii.\n");
+
+        if (animale)
+            result.append("Hotelul ").append(nume).append(" este petfriendly.\n");
+        else result.append("Hotelul ").append(nume).append(" NU este petfriendly.\n");
+
+        return result.toString();
+   }
    public double factura(int nrnopti,int nrAdulti, int nrCopii){
        return nrnopti*(pret[0]*nrAdulti+pret[0]/2*nrCopii);
    }
@@ -134,14 +160,7 @@ public class Hotel extends Turism{
     public void setAnimale(boolean animale) {
         this.animale = animale;
     }
-   
-    
-  public ArrayList AfisareDupaOptiune (ArrayList <Hotel> vectorHotel){
-      
-      return vectorHotel;
-  }
-  
-  public static void AfisareRating (ArrayList<Hotel> vectorHotel,float rating, boolean piscina){
+     public static void AfisareRating (ArrayList<Hotel> vectorHotel,float rating, boolean piscina){
       
       
       for(Hotel hotel:vectorHotel){
@@ -150,7 +169,4 @@ public class Hotel extends Turism{
       }
       
   }
-          
-    
-    
 }

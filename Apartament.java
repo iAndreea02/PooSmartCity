@@ -2,9 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package proiect.proiectpoo;
+package Hotel;
 
 import java.util.ArrayList;
+import yas.proiect.smart.Turism;
 
 public class Apartament extends Turism{
   
@@ -85,6 +86,29 @@ public class Apartament extends Turism{
            System.out.println("Daca stati cazati la acest apartament NU aveti mic de jun inclus in pret.");
        }
    }
+    
+    public String Specificatii(){ // ACTUALIZAT PT INTERFATA
+       StringBuilder result = new StringBuilder(); 
+       if(buc){
+             result.append("Acest apartament are bucatarie.\n");
+       }else {
+              result.append("Acest apartament NU are bucatarie.\n");
+       }
+       
+       if(aerconditionat){
+             result.append("Acest apartament are aer conditionat.\n");
+       }else {
+              result.append("Acest apartament NU are baer conditionat.\n");
+       }
+       
+        if(micdejun){
+              result.append("Daca stati cazati la acest apartament aveti mic de jun inclus in pret.\n");
+       }else {
+             result.append("Daca stati cazati la acest apartament NU aveti mic de jun inclus in pret.\n");
+       }
+        return result.toString();
+   }
+    
     public int getNrcamere() {
         return nrcamere;
     }
@@ -145,6 +169,7 @@ public class Apartament extends Turism{
        return nrnopti*(pret[0]*nrAdulti+pret[0]/2*nrCopii);
     
 }
+     
     public static void AfisareNrloc(ArrayList<Apartament> vectorApartament, int nrloc, boolean aerconditionat) {
         for(Apartament apartament:vectorApartament){
          if(apartament.nrlocuri==nrloc && apartament.aerconditionat==aerconditionat) 
